@@ -1,40 +1,24 @@
-package com.cognizant.pts.entity;
+package com.cognizant.pts.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
-
-@Entity
-public class Medicine {
+public class MedicineModel {
 	
-	@Id
-	@Column(name="medicine_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int medicineId;
 	
-	@Column(name="medicine_description")
+	@Override
+	public String toString() {
+		return "MedicineModel [medicineId=" + medicineId + ", medicineDescription=" + medicineDescription + ", cureFor="
+				+ cureFor + ", manufacturingCompany=" + manufacturingCompany + ", dosage=" + dosage + ", prescribedFor="
+				+ prescribedFor + ", amount=" + amount + "]";
+	}
+
 	private String medicineDescription;
 	
-	@Column(name="cure_for")
 	private String cureFor;
 	
-	@Column(name="manufacturing_company")
 	private String manufacturingCompany;
 	
-	@Column(name="dosage")
 	private int dosage;
 	
-	@Column(name="prescribed_for")
-	private String prescribedFor;
-	
-	@Column(name="amount")
-	private double amount;
-	
-	public Medicine(){}
-
 	public int getMedicineId() {
 		return medicineId;
 	}
@@ -90,4 +74,9 @@ public class Medicine {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
+	private String prescribedFor;
+	
+	private double amount;
+
 }

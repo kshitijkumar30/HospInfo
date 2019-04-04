@@ -14,13 +14,13 @@ font-style: italic;
 </style>
 </head>
 <body>
-<springform:form modelAttribute="medicine" method="post" action="addmedicine.htm">
+<springform:form modelAttribute="medicineModel" method="post" action="addmedicine.htm">
 <table>
-<tr>
+<%-- <tr>
 <td><springform:label path="medicineId">Medicine Id:</springform:label>
 <td><springform:input path="medicineId"/></td>
 <td><springform:errors path="medicineId" cssClass="error" /></td>
-</tr>
+</tr> --%>
 <tr>
 <td><springform:label path="medicineDescription">Medicine Description:</springform:label>
 <td><springform:input path="medicineDescription"/></td>
@@ -52,11 +52,11 @@ font-style: italic;
 <td><springform:errors path="amount" cssClass="error" /></td>
 </tr>
 <tr>
-<td><input type="submit" value="Add Product"></td>
+<td><input type="submit" value="Add Medicine"></td>
 </tr>
 </table>
 </springform:form>
-${status}
+<h3 style ="color=blue;">${status}</h3>
 <form method="get" action="index.htm">
 <input type = "submit" value = "View Medicine"/>
 </body>

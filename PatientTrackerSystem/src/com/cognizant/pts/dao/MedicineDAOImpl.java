@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cognizant.pts.entity.Medicine;
 
-@Repository
+@Repository("MedicineDAOImpl")
 public class MedicineDAOImpl implements MedicineDAO {
 	
 	@Autowired
@@ -35,6 +35,28 @@ public class MedicineDAOImpl implements MedicineDAO {
 		List<Medicine> medicineList = query.list();
 		session.close();
 		return medicineList;
+	}
+
+	@Override
+	public boolean updateMedicine(Medicine medicine) {
+		Session session=sessionFactory.openSession();
+		Transaction tx=session.beginTransaction();
+		session.merge(medicine);
+		tx.commit();
+		session.close();
+		return true;
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Medicine viewOneMedicine(int medicineId) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Medicine o where medicineId=:medicineId");
+		query.setInteger("medicineId", medicineId);
+		Medicine medicine = (Medicine)query.uniqueResult();
+		session.close();
+		return medicine;
 	}
 
 }

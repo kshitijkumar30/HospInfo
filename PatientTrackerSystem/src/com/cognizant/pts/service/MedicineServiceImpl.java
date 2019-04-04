@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cognizant.pts.dao.MedicineDAO;
 import com.cognizant.pts.entity.Medicine;
+import com.cognizant.pts.model.MedicineModel;
 
 @Service
 public class MedicineServiceImpl implements MedicineService{
@@ -16,21 +17,53 @@ public class MedicineServiceImpl implements MedicineService{
 	private MedicineDAO medicineDAO;
 
 	@Override
-	public boolean addMedicine(Medicine medicine) {
-		// TODO Auto-generated method stub
-		return medicineDAO.addMedicine(medicine);
-	}
-
-	@Override
 	public List<Medicine> viewAllMedicines() {
 		// TODO Auto-generated method stub
 		return medicineDAO.viewAllMedicines();
 	}
 
 
-	public boolean persistMedicine(Medicine medicine) {
+	public boolean persistMedicine(MedicineModel medicineModel) {
 		// TODO Auto-generated method stub
+		Medicine medicine = new Medicine();
+		medicine.setAmount(medicineModel.getAmount());
+		medicine.setDosage(medicineModel.getDosage());
+		medicine.setMedicineId(medicineModel.getMedicineId());
+		medicine.setCureFor(medicineModel.getCureFor());
+		medicine.setManufacturingCompany(medicineModel.getManufacturingCompany());
+		medicine.setMedicineDescription(medicineModel.getMedicineDescription());
+		medicine.setPrescribedFor(medicineModel.getPrescribedFor());
 		return medicineDAO.addMedicine(medicine);
+	}
+
+	@Override
+	public boolean updateMedicine(MedicineModel medicineModel) {
+		// TODO Auto-generated method stub
+		Medicine medicine = new Medicine();
+		medicine.setAmount(medicineModel.getAmount());
+		medicine.setDosage(medicineModel.getDosage());
+		medicine.setMedicineId(medicineModel.getMedicineId());
+		medicine.setCureFor(medicineModel.getCureFor());
+		medicine.setManufacturingCompany(medicineModel.getManufacturingCompany());
+		medicine.setMedicineDescription(medicineModel.getMedicineDescription());
+		medicine.setPrescribedFor(medicineModel.getPrescribedFor());
+		return medicineDAO.updateMedicine(medicine);
+		
+	}
+
+	@Override
+	public MedicineModel viewOneMedicine(int medicineId) {
+		// TODO Auto-generated method stub
+		Medicine medicine = medicineDAO.viewOneMedicine(medicineId);
+		MedicineModel medicineModel = new MedicineModel();
+		medicineModel.setAmount(medicine.getAmount());
+		medicineModel.setDosage(medicine.getDosage());
+		medicineModel.setMedicineId(medicine.getMedicineId());
+		medicineModel.setCureFor(medicine.getCureFor());
+		medicineModel.setManufacturingCompany(medicine.getManufacturingCompany());
+		medicineModel.setMedicineDescription(medicine.getMedicineDescription());
+		medicineModel.setPrescribedFor(medicine.getPrescribedFor());
+		return medicineModel;
 	}
 
 

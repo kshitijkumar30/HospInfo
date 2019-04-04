@@ -15,7 +15,9 @@
 </tr>
 <c:forEach items="${medicineList}" var="medicine">
 <tr>
-<td><c:out value="${medicine.medicineId}"/></td>
+<td>
+<a href="viewonemedicine.htm?medicineId=${medicine.medicineId}">
+<c:out value="${medicine.medicineId}"/></a></td>
 <td><c:out value="${medicine.medicineDescription}"/></td>
 <td><c:out value="${medicine.cureFor}"/></td>
 <td><c:out value="${medicine.manufacturingCompany}"/></td>
@@ -25,6 +27,7 @@
 </tr>
 </c:forEach>
 </table>
+<h3 style ="color:blue;">${status1}</h3>
 <form method="get" action="addmedicineform.htm">
 <input type = "submit" value = "Add Medicine"/>
 </form>
